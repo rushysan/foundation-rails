@@ -93,15 +93,17 @@
           submit_event = /submit/.test(e.type);
 
       // Has to count up to make sure the focus gets applied to the top error
-      for (var i=0; i < validation_count; i++) {
-        if (!validations[i] && (submit_event || is_ajax)) {
-          if (this.settings.focus_on_invalid) els[i].focus();
-          form.trigger('invalid');
-          this.S(els[i]).closest('form').attr(this.invalid_attr, '');
-          return false;
+      if (!submit_event) {
+        for (var i=0; i < validation_count; i++) {
+          if (!validations[i] && (submit_event || is_ajax)) {
+            if (this.settings.focus_on_invalid) els[i].focus();
+            form.trigger('invalid');
+            this.S(els[i]).closest('form').attr(this.invalid_attr, '');
+            return false;
+          }
         }
       }
-
+      
       if (submit_event || is_ajax) {
         form.trigger('valid');
       }
