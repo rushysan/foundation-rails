@@ -63,7 +63,8 @@
         })
         .on('reset', function() {
           return self.reset($(this));
-        })
+        });
+        /*
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
@@ -78,6 +79,7 @@
               }.bind(this), settings.timeout);
             }
           });
+        */
     },
 
     reset : function (form) {
